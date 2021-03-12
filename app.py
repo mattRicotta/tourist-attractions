@@ -36,10 +36,10 @@ def add_location():
       visit.add(name, description, category)
 
   ## Redirect to locations route function
-  return redirect(url_for("locations", category=category, _external=True, _scheme="http"))
+  return redirect(url_for("locations", category=category, _external=True, _scheme="https"))
 
 @app.route("/")
 def index():
 
   ## Redirect to locations route function
-  return redirect(url_for("locations", category="recommended", _external=True, _scheme="http"))
+  return redirect(url_for("locations", category="recommended", _external=True, _scheme="https"))
