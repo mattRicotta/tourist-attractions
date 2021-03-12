@@ -16,7 +16,6 @@ def locations(category):
   locations = visit.get_list_by_category(category)
   ## Check the request for form data and process
   if request.method == "POST":
-    print(request.form.items())
     [(name, action)] = request.form.items()
 
     if action == UP_ACTION:
@@ -30,7 +29,6 @@ def locations(category):
 def add_location():
   ## Validate and collect the form data
   add_form = AddLocationForm()
-  category = add_form.category.data
   if add_form.validate_on_submit():
       name=add_form.name.data
       description=add_form.description.data
@@ -38,10 +36,10 @@ def add_location():
       visit.add(name, description, category)
 
   ## Redirect to locations route function
-  return redirect(url_for("locations", category=category, _external=True, _scheme='https'))
+  return redirect(url_for("locations", category=category, _external=True, _scheme="https"))
 
 @app.route("/")
 def index():
 
   ## Redirect to locations route function
-  return redirect(url_for("locations", category="recommended", _external=True, _scheme='https'))
+  return redirect(url_for("locations", category="recommended", _external=True, _scheme="https"))
